@@ -67,6 +67,17 @@ The final cleaned dataset contained the following key columns:
 
 This cleaned dataset allowed for more efficient analysis and visualization in Tableau.
 
+### Additional Data Preparation Steps
+
+- Reviewed discharge disposition labels before grouping them into broader categories.
+- Converted discharge_disposition_id into readable discharge_disposition_label.
+- Created grouped discharge categories: Discharged, Transferred, Expired, Hospice, and Other.
+- Implemented spreadsheet-based grouping logic and refined it after initial incorrect results.
+- Used pivot-table-based exploration to validate discharge category distributions before visualization.
+- Verified final dataset structure and retained diagnosis fields (diag_1, diag_2, diag_3) to preserve reproducibility of disease classification.
+
+The final cleaned dataset contained **101,766 records and 19 columns**, optimized for efficient analysis and visualization.
+
 ---
 
 # 4. Disease Classification Method
@@ -92,9 +103,31 @@ Based on the diagnosis codes, patients were categorized into the following disea
 
 This grouping enabled the analysis of how combinations of diseases affect hospital outcomes.
 
+### Additional Classification Logic
+
+- Simplified repeated diagnosis combinations (e.g., Cancer, Cancer → Cancer Only).
+- Used disease presence logic instead of counting duplicate occurrences.
+- Ensured disease groups are mutually exclusive and non-overlapping.
+- Created a Diabetes Encounter filter to isolate diabetes-specific records for the diabetes-focused dashboard (Dashboard 2).
+
 ---
 
-# 5. Dashboard Design
+# 5. Calculated Fields & Logic
+
+The following calculated fields were created in Tableau to support analysis:
+
+- **disease_type**: Derived from diag_1, diag_2, diag_3 to identify major diseases
+- **Disease Group**: Categorized patients into mutually exclusive comorbidity segments
+- **Diabetes Encounter**: Identified diabetes-specific records for targeted analysis
+- **discharge_category_grouped**: Simplified detailed discharge outcomes into broader categories
+- **Total Encounters**: Calculated using COUNT(Patient Nbr)
+- **Average Length of Stay**: Calculated using AVG(time_in_hospital)
+
+Consistent aggregation logic was applied across all visualizations to ensure accuracy.
+
+---
+
+# 6. Dashboard Design
 
 Two interactive dashboards were developed using **Tableau**.
 
@@ -123,11 +156,21 @@ Visualizations included:
 - Diabetes medication usage
 - Readmission analysis across discharge outcomes
 
-These dashboards allow users to interactively explore hospital outcomes across different patient groups.
+These dashboards enable interactive exploration of hospital outcomes across different patient groups.
+
+### Dashboard Interactivity & Design Decisions
+
+- Added filters for Age, Gender, and Race across dashboards.
+- Implemented click-based drill-down interactions between visualizations.
+- Used Tableau action filters with selected field mapping.
+- Scoped filters using “Apply to Worksheets → Selected Worksheets” to prevent cross-dashboard interference.
+- Evaluated multiple visualization types including treemap, bar chart, and bubble chart before selecting final visuals.
+- Replaced cluttered or less readable charts with clearer alternatives.
+- Fixed dashboard layout issues by switching from Automatic to Fixed sizing (1250 × 650).
 
 ---
 
-# 6. Key Insights
+# 7. Key Insights
 
 Several insights emerged from the analysis:
 
@@ -140,7 +183,7 @@ These findings highlight the importance of considering comorbidities when analyz
 
 ---
 
-# 7. Conclusion
+# 8. Conclusion
 
 This project demonstrates how healthcare datasets can be analyzed using data visualization techniques to uncover patterns in patient outcomes.
 
