@@ -109,7 +109,19 @@ insulin
 diabetesMed  
 discharge_disposition_label  
 
+Final cleaned dataset contains **101,766 records and 19 columns**.
+
 This produced a **clean dataset optimized for dashboard visualization and analysis**.
+
+---
+
+# 🧾 Spreadsheet Preparation & Validation
+
+• Reviewed detailed discharge disposition labels before grouping them into broader categories.  
+• Created grouped discharge categories: Discharged, Transferred, Expired, Hospice, and Other.
+• Implemented spreadsheet-based grouping logic and refined it after initial incorrect results.
+• Used pivot-table-based exploration to validate discharge category distributions before visualization.
+• Verified final dataset structure and retained diagnosis fields (diag_1, diag_2, diag_3) for reproducibility of disease classification.
 
 ---
 
@@ -135,6 +147,17 @@ All Three Diseases
 Other  
 
 This grouping enabled analysis of **comorbidity patterns and their impact on hospital outcomes**.
+
+---
+
+# ⚙️ Calculated Fields & Logic
+
+• Created **disease_type** using diagnosis fields (diag_1, diag_2, diag_3) to identify Diabetes, Heart Disease, Cancer, and Other.
+• Built **Disease Group** to classify patients into mutually exclusive comorbidity segments.
+• Created **Diabetes Encounter** logic to isolate diabetes-specific records for Dashboard 2 (Diabetes-focused dashboard).
+• Developed **discharge_category_grouped** to simplify detailed discharge labels into broader categories.
+• Implemented KPI calculations including **Total Encounters** and **Average Length of Stay**.
+• Used consistent aggregation logic (`COUNT(Patient Nbr)`) across all visualizations to maintain metric consistency.
 
 ---
 
@@ -182,6 +205,24 @@ This dashboard enables deeper exploration of treatment patterns and discharge ou
 
 ---
 
+## 🔗 Dashboard Interactions & Features
+
+• Added interactive filters for Age, Gender, and Race across dashboards.
+• Implemented click-based drill-down interactions between visualizations.
+• Used Tableau action filters with selected field mapping.
+• Scoped filters using “Apply to Worksheets → Selected Worksheets” to prevent cross-dashboard interference.
+• Designed tooltips and labels to improve readability and reduce clutter.
+
+---
+
+## 🎯 Visualization Design Decisions
+
+• Evaluated multiple visualization types including treemap, bar chart, bubble chart and other layout variations.
+• Replaced cluttered or less readable charts with clearer alternatives.
+• Selected final visualizations based on interpretability and user experience.
+
+---
+
 # 🔎 Key Insights
 
 Several insights emerge from the analysis:
@@ -196,12 +237,12 @@ Several insights emerge from the analysis:
 
 ---
 
-# 🛠 Tools Used
+# 🛠 Tools & Technologies
 
-• Tableau Public  
-• Data Cleaning  
-• Data Visualization  
-• Healthcare Data Analysis  
+• Tableau (Dashboard Development)  
+• Tableau Public (Dashboard Deployment)  
+• Excel / Google Sheets (Data Cleaning & Preprocessing)  
+• GitHub (Project Documentation & Hosting)  
 
 ---
 
