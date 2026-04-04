@@ -230,7 +230,7 @@ This dashboard enables deeper exploration of treatment patterns and discharge ou
 
 ## 🎯 Visualization Design Decisions
 
-• Evaluated multiple visualization types including treemap, bar chart, bubble chart and other layout variations.
+• Evaluated multiple visualization types including heatmap, bar chart, bubble chart and other layout variations.
 
 • Replaced cluttered or less readable charts with clearer alternatives.
 
